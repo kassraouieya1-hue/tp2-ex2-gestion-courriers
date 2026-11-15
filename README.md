@@ -1,15 +1,8 @@
-# TP 2 : Héritage et Polymorphisme — Exercice 2 : Gestion des courriers
+# TP 2 :Exercice 2 : Gestion des courriers
 
-**Nom et prénom :** _à compléter_
+Nom et prénom :Eya kassraoui
 
-## Description
-
-Simulation de la gestion des courriers (lettres et colis) d'un bureau de poste tunisienne.
-`Lettre` et `Colis` héritent de `Courrier` et redéfinissent `decrire()` et `affranchir()`.
-`BoiteCourrier` stocke des `Courrier` : l'appel à `affranchir()` / `decrire()` est résolu
-dynamiquement selon le type réel de l'objet (polymorphisme).
-
-## Diagramme de classes UML
+ Diagramme de classes UML
 
 ```mermaid
 classDiagram
