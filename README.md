@@ -2,58 +2,59 @@
 
 Nom et prénom :Eya kassraoui
 
- Diagramme de classes UML
+ #Diagramme de classes UML
+ **Classe Courrier**
 
-```mermaid
-classDiagram
-    class Courrier {
-        +double TARIF_BASE = 0.5$
-        #boolean express
-        #String adresse
-        +Courrier(express: boolean, adresse: String)
-        +estValide() boolean
-        +decrire() void
-        +affranchir() double
-    }
-    class Lettre {
-        -double poids
-        -String format
-        +Lettre(express: boolean, adresse: String, poids: double, format: String)
-        +decrire() void
-        +affranchir() double
-    }
-    class Colis {
-        -double poids
-        -double volume
-        +Colis(express: boolean, adresse: String, poids: double, volume: double)
-        +decrire() void
-        +affranchir() double
-    }
-    class BoiteCourrier {
-        -Courrier[] courriers
-        -int nbCourriers
-        +BoiteCourrier(n: int)
-        +ajouter(c: Courrier) void
-        +affranchir() double
-        +courriersInvalides() int
-        +afficher() void
-    }
-    class TestCourrier {
-        +main(args: String[])$ void
-    }
+Attributs :
+- modeExpedition : boolean
+- adresse : String
+- tarifBase : double (constante = 0.5)
 
-    Courrier <|-- Lettre
-    Courrier <|-- Colis
-    BoiteCourrier "1" o-- "0..n" Courrier
-    TestCourrier ..> BoiteCourrier
-```
+Méthodes :
+- Courrier(boolean, String)
+- estValide() : boolean
+- decrire() : void
+- affranchir() : double
 
-## Formules d'affranchissement
+**Classe Lettre**
 
-| Type | Montant (normal) | Express |
-|------|------------------|---------|
-| Courrier | 0.5 | × 2 |
-| Lettre | 2.50 (A4) ou 3.50 (A3) + 0.5 × poids (kg) | × 2 |
-| Colis | 0.25 × volume (L) + poids (kg) × 1.0 | × 2 |
+Hérite de la classe Courrier.
 
-Un courrier invalide (adresse nulle) a un montant d'affranchissement nul.
+Attributs :
+- poids : double
+- format : String
+
+Méthodes :
+- Lettre(...)
+- decrire() : void
+- affranchir() : double
+
+**Classe Colis**
+
+Hérite de la classe Courrier.
+
+Attributs :
+- poids : double
+- volume : double
+
+Méthodes :
+- Colis(...)
+- decrire() : void
+- affranchir() : double
+
+**Classe BoiteCourrier**
+
+Attribut :
+- courriers : Courrier[]
+
+Méthodes :
+- affranchir() : double
+- courriersInvalides() : int
+- afficher() : void
+
+**Relations :**
+- Lettre hérite de Courrier.
+- Colis hérite de Courrier.
+- BoiteCourrier contient plusieurs Courriers.s
+
+
